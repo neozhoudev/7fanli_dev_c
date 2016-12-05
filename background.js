@@ -395,6 +395,28 @@ qifanli_extension.onRequest.addListener(
 
 
 
+        } else if (request.type == "openTab") {
+
+
+
+            var openurl = request.url;
+            qifanli_tabs.create({
+                url: openurl,
+                selected: true
+            });
+            qifanli_tabs.getAllInWindow(function (tabs) {
+
+                for (var tab in tabs) {
+
+                    if (tabs[tab].url.indexOf("www.alimama.com") != -1) {
+
+                        qifanli_tabs.remove(tabs[tab].id, function () {});
+                        break;
+                    }
+
+                }
+
+            });
         }
     }
 );

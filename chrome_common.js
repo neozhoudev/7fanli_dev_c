@@ -34,6 +34,18 @@ function sendMes(callback, url, param) {
     });
 }
 
+function openTab(callback, url, param) {
+
+    qifanli_extension.sendRequest({
+        "type": "openTab",
+        "url": url,
+        "param": param
+    }, function (response) {
+
+    });
+
+}
+
 function sendServer(callback, url, param) {
 
 

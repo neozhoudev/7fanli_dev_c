@@ -91,24 +91,39 @@
 
     function getUrls(data, x) {
 
-        if (data != undefined) {
+        if (typeof (data) != "undefined" && data != "") {
 
             //拆分id，组合成商品链接
             var ids = data.split("|");
-            if (ids.length > 0) {
+
+            if (ids.length > 1) {
                 var obj = new Object();
                 obj.o = ids;
                 obj.i = 0;
                 getNextUrl(null, obj);
 
+            } else {
+
+
+                setTimeout(checkServer, 1000);
+
+                reloadnum++;
+                if (reloadnum == 20) {
+
+                    //location.reload(true);
+                    openTab(function (data) {}, "http://www.alimama.com", "");
+                }
+
             }
         } else {
 
             setTimeout(checkServer, 1000);
-            reloadnum++;
-            if (reloadnum == 5) {
 
-                location.reload(true);
+            reloadnum++;
+            if (reloadnum == 20) {
+
+                //location.reload(true);
+                openTab(function (data) {}, "http://www.alimama.com", "");
             }
         }
 
@@ -139,7 +154,7 @@
             sendServer(getNextUrl, getTransUrl + "?siteid=" + siteId + "&adzoneid=" + getadzoneid + "&promotionURL=" + encodeURIComponent("http://item.taobao.com/item.htm?id=" + obj.o[i]) + "&t=" + timestamp, nobj);
         } else {
 
-            checkServer();
+            setTimeout(checkServer, 1000);
 
         }
 
