@@ -1,0 +1,47 @@
+{
+    "manifest_version": 2,
+    "name": "7返利-diy",
+    "description": "7返利，返利如此简单！",
+    "version": "0.0.0",
+    "permissions": [
+   "tabs",
+   "cookies",
+   "http://*/*",
+   "https://*/*"
+  ],
+    "icons": {
+        "16": "16.png",
+        "32": "32.png",
+        "64": "64.png"
+    },
+    "content_scripts": [
+        {
+            "matches": ["http://item.taobao.com/*", "http://detail.tmall.com/*", "http://chaoshi.detail.tmall.com/*", "http://*.taobao.com/*", "http://*.tmall.com/*", "http://detail.ju.taobao.com/*", "http://*.tmall.hk/*", "http://detail.tmall.hk/*", "http://detail.yao.95095.com/*", "http://baoxian.alitrip.com/*", "http://*.alitrip.com/*", "https://tuan.alitrip.com/*", "https://item.taobao.com/*", "https://detail.tmall.com/*", "https://chaoshi.detail.tmall.com/*", "https://*.taobao.com/*", "https://*.tmall.com/*", "https://detail.ju.taobao.com/*", "https://*.tmall.hk/*", "https://detail.tmall.hk/*", "https://detail.yao.95095.com/*", "https://items.alitrip.com/*", "https://baoxian.taobao.com/*", "https://tuan.alitrip.com/*", "https://*.alitrip.com/*"],
+            "js": ["chrome_common.js", "fanli.js"],
+            "run_at": "document_end"
+    },
+        {
+            "matches": ["http://*.alimama.com/*"],
+            "js": ["chrome_common.js", "mama.js"],
+            "run_at": "document_end"
+    }, {
+            "matches": ["http://*.7fanli.com/*"],
+            "js": ["chrome_common.js", "setting.js"],
+            "run_at": "document_end"
+
+	}, {
+            "matches": ["http://*/*"],
+            "js": ["tongji.js"],
+            "run_at": "document_end"
+	}
+  ],
+    "browser_action": {
+        "default_icon": "32.png",
+        "default_popup": "7fanli.html"
+    },
+    "background": {
+        "scripts": ["chrome_common.js", "background.js"]
+    },
+    "homepage_url": "http://7fanli.com"
+
+}
